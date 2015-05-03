@@ -7,3 +7,13 @@ C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Debug\AA.exe
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Debug\AA.pdb
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.exe
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.pdb
+C:\AA-Game\AA\bin\Debug\AA.exe.config
+C:\AA-Game\AA\obj\Debug\AA.exe
+C:\AA-Game\AA\obj\Debug\AA.pdb
+C:\AA-Game\AA\bin\Debug\AA.exe
+C:\AA-Game\AA\bin\Debug\AA.pdb
+C:\AA-Game\AA\obj\Debug\AA.csprojResolveAssemblyReference.cache
+C:\AA-Game\AA\obj\Debug\AA.Properties.Resources.resources
+C:\AA-Game\AA\obj\Debug\AA.csproj.GenerateResource.Cache
+C:\AA-Game\AA\obj\Debug\AA.StartScreen.resources
+C:\AA-Game\AA\obj\Debug\AA.Game.resources
