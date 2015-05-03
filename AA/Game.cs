@@ -15,12 +15,11 @@ namespace AA
         StartScreen parentForm;
         Timer closeTimer;
 
-        public Game(StartScreen parent)
+        public Game()
         {
             InitializeComponent();
             DoubleBuffered = true;
             Rotator = new Rotator(1);
-            parentForm = parent;
             //FormBorderStyle = FormBorderStyle.None;
             //WindowState = FormWindowState.Maximized;
 
@@ -30,6 +29,12 @@ namespace AA
             {
                 Rotator.Balls.Add(new Ball(i * (360 / 10)));
             }
+        }
+
+        public Game(StartScreen parent)
+            : this()
+        {
+            parentForm = parent;
         }
 
         private void Game_Paint(object sender, PaintEventArgs e)
@@ -70,6 +75,7 @@ namespace AA
             closeTimer.Interval = 50;
             closeTimer.Tick += fadeOutTick;
             closeTimer.Start();
+            parentForm.reloadForm();
         }
 
         private void fadeOutTick(object sender, EventArgs e)
@@ -77,13 +83,9 @@ namespace AA
             this.Opacity -= 0.05;
             if (this.Opacity <= 0.05)
             {
+                closeTimer.Stop();
                 this.Close();
             }
-        }
-
-        private void Game_FormClosing(object sender, FormClosingEventArgs e)
-        {
-            parentForm.reloadForm();
         }
     }
 }
