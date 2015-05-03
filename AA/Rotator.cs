@@ -51,7 +51,7 @@ namespace AA
                 var line_coords = GetCoordinatesForBall(center, current_angle, 0);
                 g.DrawLine(Pen, center, line_coords);
             }
-
+            g.FillEllipse(Brush, Padding + Radius / 2, Padding + Radius * StickRatio * 2, Ball.Radius, Ball.Radius);
         }
         public Point GetCoordinatesForBall(Point start, double angle, int offset)
         {
@@ -60,11 +60,31 @@ namespace AA
             return new Point(X,Y);
         }
 
-
-
         public void Rotate()
         {
             Angle = (Angle + Speed) % 360;
+        }
+
+        public void AddNewBall()
+        {
+            var angle = 90 - Angle;
+            if (angle < 0) {
+                angle += 360;
+            }
+            Balls.Add(new Ball(angle));
+        }
+
+        public bool CheckForCollision()
+        {
+            var last_ball = Balls[Balls.Count - 1];
+
+            for (int i = 0; i < Balls.Count - 1; i++)
+            {
+                if (Math.Abs(last_ball.Angle - Balls[i].Angle) <= BallAngle + 1 || Math.Abs(last_ball.Angle - Balls[i].Angle) >= (360 - BallAngle - 1))
+                    return true;
+            }
+
+            return false;
         }
     }
 }

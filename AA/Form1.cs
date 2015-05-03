@@ -17,16 +17,16 @@ namespace AA
         public Form1()
         {
             InitializeComponent();
+            FormBorderStyle = FormBorderStyle.None;
+            WindowState = FormWindowState.Maximized;
             DoubleBuffered = true;
             Rotator = new Rotator(1);
-            //Rotator.Balls.Add(new Ball(0));
-            //Rotator.Balls.Add(new Ball(90));
-            //Rotator.Balls.Add(new Ball(180));
-            //Rotator.Balls.Add(new Ball(270));
+
+            KeyDown += Form1_KeyDown;
 
             for (int i = 0; i < 10; i++)
             {
-                Rotator.Balls.Add(new Ball(i*(360/10)));
+                Rotator.Balls.Add(new Ball(i * (360 / 10)));
             }
         }
 
@@ -39,6 +39,20 @@ namespace AA
         {
             Rotator.Rotate();
             Invalidate();
+        }
+
+        private void Form1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Space)
+            {
+                Rotator.AddNewBall();
+                if (Rotator.CheckForCollision())
+                {
+                    // not implemented
+                    timer1.Stop();
+                    Invalidate();
+                }
+            }
         }
     }
 }
