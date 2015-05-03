@@ -1,0 +1,8 @@
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Release\AA.exe.config
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Release\AA.exe
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Release\AA.pdb
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Release\AA.Form1.resources
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Release\AA.Properties.Resources.resources
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Release\AA.csproj.GenerateResource.Cache
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Release\AA.exe
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Release\AA.pdb
