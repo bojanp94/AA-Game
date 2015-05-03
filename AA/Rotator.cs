@@ -35,6 +35,7 @@ namespace AA
 
         public void Draw (Graphics g)
         {
+            // draw the main circle
             g.FillEllipse(Brush, Padding, Padding, Radius * 2, Radius * 2);
             foreach (var ball in Balls)
             {
@@ -51,7 +52,9 @@ namespace AA
                 var line_coords = GetCoordinatesForBall(center, current_angle, 0);
                 g.DrawLine(Pen, center, line_coords);
             }
-            g.FillEllipse(Brush, Padding + Radius / 2, Padding + Radius * StickRatio * 2, Ball.Radius, Ball.Radius);
+
+            // draw the waiting ball
+            g.FillEllipse(Brush, Padding + Radius - Ball.Radius / 2, Padding + Radius * 2 + Radius * StickRatio , Ball.Radius, Ball.Radius);
         }
         public Point GetCoordinatesForBall(Point start, double angle, int offset)
         {
@@ -80,7 +83,7 @@ namespace AA
 
             for (int i = 0; i < Balls.Count - 1; i++)
             {
-                if (Math.Abs(last_ball.Angle - Balls[i].Angle) <= BallAngle + 1 || Math.Abs(last_ball.Angle - Balls[i].Angle) >= (360 - BallAngle - 1))
+                if (Math.Abs(last_ball.Angle - Balls[i].Angle) < BallAngle || Math.Abs(last_ball.Angle - Balls[i].Angle) > (360 - BallAngle ))
                     return true;
             }
 
