@@ -44,9 +44,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 686);
             this.Name = "Game";
-            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.Game_FormClosing);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
-            this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.Game_KeyDown);
             this.ResumeLayout(false);
 
         }
