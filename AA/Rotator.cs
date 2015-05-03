@@ -12,6 +12,7 @@ namespace AA
         public double Angle { get; set; }
         public double Speed { get; set; }
         public int Radius { get; set; }
+        public int HorizontalOffset { get; set; }
         public const int BallAngle = 8;
         public const double DegToRad = Math.PI / 180.0;
         public const int StickRatio = 3;
@@ -27,6 +28,7 @@ namespace AA
             Angle = 0.0;
             Speed = speed;
             Radius = 80;
+            HorizontalOffset = 0;
             Balls = new List<Ball>();           
             Brush = new SolidBrush (Color.Black);
             Pen = new Pen(Brush, PenWidth);
@@ -36,13 +38,13 @@ namespace AA
         public void Draw (Graphics g)
         {
             // draw the main circle
-            g.FillEllipse(Brush, Padding, Padding, Radius * 2, Radius * 2);
+            g.FillEllipse(Brush, Padding + HorizontalOffset, Padding, Radius * 2, Radius * 2);
             foreach (var ball in Balls)
             {
                 var current_angle = ball.Angle;
                 current_angle += Angle;
                 current_angle %= 360.0;
-                var center = new Point(Padding + Radius, Padding + Radius);
+                var center = new Point(Padding + Radius + HorizontalOffset, Padding + Radius);
                 var coords = GetCoordinatesForBall(center, current_angle, Ball.Radius/2);
 
                 // draw the ball
@@ -54,12 +56,12 @@ namespace AA
             }
 
             // draw the waiting ball
-            g.FillEllipse(Brush, Padding + Radius - Ball.Radius / 2, Padding + Radius * 2 + Radius * StickRatio , Ball.Radius, Ball.Radius);
+            g.FillEllipse(Brush, Padding + Radius + HorizontalOffset - Ball.Radius / 2, Padding + Radius * 2 + Radius * StickRatio , Ball.Radius, Ball.Radius);
         }
         public Point GetCoordinatesForBall(Point start, double angle, int offset)
         {
             var X = (int)(start.X + Math.Cos(angle * DegToRad) * Radius * StickRatio - offset);
-            var Y = (int)(start.X + Math.Sin(angle * DegToRad) * Radius * StickRatio - offset);
+            var Y = (int)(start.Y + Math.Sin(angle * DegToRad) * Radius * StickRatio - offset);
             return new Point(X,Y);
         }
 
