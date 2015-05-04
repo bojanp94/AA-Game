@@ -14,21 +14,26 @@ namespace AA
         Rotator Rotator;
         StartScreen parentForm;
         Timer closeTimer;
+        GameLevels Levels;
 
         public Game()
         {
             InitializeComponent();
             DoubleBuffered = true;
-            Rotator = new Rotator(1);
+            //Rotator = new Rotator(1);
+            //Rotator.NumberOfBalls = 2;
             //FormBorderStyle = FormBorderStyle.None;
             //WindowState = FormWindowState.Maximized;
 
+            Levels = new GameLevels();
+            Rotator = Levels.NextLevel();
+
             KeyDown += Game_KeyDown;
 
-            for (int i = 0; i < 10; i++)
-            {
-                Rotator.Balls.Add(new Ball(i * (360 / 10)));
-            }
+            //for (int i = 0; i < 10; i++)
+            //{
+            //    Rotator.Balls.Add(new Ball(i * (360 / 10)));
+            //}
         }
 
         public Game(StartScreen parent)
@@ -56,6 +61,11 @@ namespace AA
                 if (Rotator.CheckForCollision())
                 {
                     LoseGame();
+                    Invalidate();
+                }
+                if (Rotator.NumberOfBallsToShoot == 0)
+                {
+                    WinLevel();
                     Invalidate();
                 }
             }
@@ -86,6 +96,37 @@ namespace AA
                 closeTimer.Stop();
                 this.Close();
             }
+        }
+
+        private void NextLevel()
+        {
+            closeTimer = new Timer();
+            closeTimer.Interval = 50;
+            closeTimer.Tick += fadeOutTick;
+            //closeTimer.Start();
+
+            if (Levels.NextLevel() != null)
+            {
+                Rotator = Levels.NextLevel();
+            }
+            else
+            {
+                // you win message
+                this.Close();
+            }
+
+            this.BackColor = Color.White;
+            
+            timer1.Start();
+            Invalidate();
+        }
+
+        private void WinLevel()
+        {
+            timer1.Stop();
+            this.BackColor = Color.Green;
+            Invalidate();
+            NextLevel();
         }
     }
 }
