@@ -20,6 +20,9 @@ namespace AA
         public List<Ball> Balls;
         Brush Brush;
         Pen Pen;
+        public int NumberOfBallsToShoot { get; set; }
+        public int NumberOfBallsRotator { get; set; }
+        public bool RotateClockWise { get; set; }
 
 
         public Rotator (double speed)
@@ -31,6 +34,7 @@ namespace AA
             Brush = new SolidBrush (Color.Black);
             Pen = new Pen(Brush, PenWidth);
             Ball.Radius = (int)(Radius * StickRatio * Math.Tan(BallAngle * DegToRad));
+            RotateClockWise = true;
         }
 
         public void Draw (Graphics g)
@@ -55,6 +59,14 @@ namespace AA
 
             // draw the waiting ball
             g.FillEllipse(Brush, Padding + Radius - Ball.Radius / 2, Padding + Radius * 2 + Radius * StickRatio , Ball.Radius, Ball.Radius);
+            if (NumberOfBallsToShoot / 10 > 0)
+            {
+                g.DrawString(NumberOfBallsToShoot.ToString(), new Font(new FontFamily("Arial"), 12), new SolidBrush(Color.White), 5 + Padding + Radius - Ball.Radius / 2, 8 + Padding + Radius * 2 + Radius * StickRatio);
+            }
+            else
+            {
+                g.DrawString(NumberOfBallsToShoot.ToString(), new Font(new FontFamily("Arial"), 12), new SolidBrush(Color.White), 10 + Padding + Radius - Ball.Radius / 2, 8 + Padding + Radius * 2 + Radius * StickRatio);
+            }
         }
         public Point GetCoordinatesForBall(Point start, double angle, int offset)
         {
@@ -65,11 +77,26 @@ namespace AA
 
         public void Rotate()
         {
-            Angle = (Angle + Speed) % 360;
+            if (RotateClockWise)
+            {
+                Angle = (Angle + Speed) % 360;
+            }
+            else
+            {
+                Angle = (Angle - Speed) % 360;
+            }
         }
 
         public void AddNewBall()
         {
+            if (NumberOfBallsToShoot == 0)
+            {
+                // you win message
+                return;
+            }
+
+            NumberOfBallsToShoot--;
+
             var angle = 90 - Angle;
             if (angle < 0) {
                 angle += 360;
