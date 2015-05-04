@@ -1,0 +1,5 @@
+C:\Users\Bojan\Desktop\Vizuelno\AA\Backup\AA\bin\Debug\AA.exe.config
+C:\Users\Bojan\Desktop\Vizuelno\AA\Backup\AA\obj\Debug\AA.csprojResolveAssemblyReference.cache
+C:\Users\Bojan\Desktop\Vizuelno\AA\Backup\AA\obj\Debug\AA.Form1.resources
+C:\Users\Bojan\Desktop\Vizuelno\AA\Backup\AA\obj\Debug\AA.Properties.Resources.resources
+C:\Users\Bojan\Desktop\Vizuelno\AA\Backup\AA\obj\Debug\AA.csproj.GenerateResource.Cache
