@@ -44,6 +44,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(766, 686);
             this.Name = "Game";
+            this.SizeChanged += new System.EventHandler(this.Game_SizeChanged);
             this.Paint += new System.Windows.Forms.PaintEventHandler(this.Game_Paint);
             this.ResumeLayout(false);
 
