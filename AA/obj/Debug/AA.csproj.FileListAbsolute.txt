@@ -1,6 +1,5 @@
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Debug\AA.exe.config
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.csprojResolveAssemblyReference.cache
-C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.Form1.resources
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.Properties.Resources.resources
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.csproj.GenerateResource.Cache
 C:\Users\Bojan\Desktop\Vizuelno\AA\AA\bin\Debug\AA.exe
@@ -17,3 +16,5 @@ C:\AA-Game\AA\obj\Debug\AA.Properties.Resources.resources
 C:\AA-Game\AA\obj\Debug\AA.csproj.GenerateResource.Cache
 C:\AA-Game\AA\obj\Debug\AA.StartScreen.resources
 C:\AA-Game\AA\obj\Debug\AA.Game.resources
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.Game.resources
+C:\Users\Bojan\Desktop\Vizuelno\AA\AA\obj\Debug\AA.StartScreen.resources

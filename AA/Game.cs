@@ -28,7 +28,7 @@ namespace AA
             this.BackColor = Color.White;
             Levels = new GameLevels();
             Rotator = Levels.NextLevel();
-
+            Rotator.HorizontalOffset = (this.Width / 2) - Rotator.Padding - Rotator.Radius;
             KeyDown += Game_KeyDown;
 
             //for (int i = 0; i < 10; i++)
@@ -109,6 +109,7 @@ namespace AA
             if (Levels.NextLevel() != null)
             {
                 Rotator = Levels.NextLevel();
+                Rotator.HorizontalOffset = (this.Width / 2) - Rotator.Padding - Rotator.Radius;
             }
             else
             {
@@ -128,6 +129,11 @@ namespace AA
             this.BackColor = Color.Green;
             Invalidate();
             NextLevel();
+        }
+
+        private void Game_SizeChanged(object sender, EventArgs e)
+        {
+            Rotator.HorizontalOffset = (this.Width / 2) - Rotator.Padding - Rotator.Radius;
         }
     }
 }
