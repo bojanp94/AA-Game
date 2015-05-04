@@ -21,6 +21,7 @@ namespace AA
             WindowState = FormWindowState.Maximized;
             DoubleBuffered = true;
             Rotator = new Rotator(1);
+            Rotator.HorizontalOffset = (Screen.PrimaryScreen.Bounds.Width / 2) - Rotator.Padding - Rotator.Radius;
 
             KeyDown += Form1_KeyDown;
 
@@ -53,6 +54,15 @@ namespace AA
                     Invalidate();
                 }
             }
+        }
+        private void Animate()
+        {
+                
+        }
+
+        private void Form1_ResizeEnd(object sender, EventArgs e)
+        {
+             Rotator.HorizontalOffset = (Screen.PrimaryScreen.Bounds.Width / 2) - Rotator.Padding - Rotator.Radius;
         }
     }
 }
