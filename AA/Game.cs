@@ -25,6 +25,7 @@ namespace AA
             //FormBorderStyle = FormBorderStyle.None;
             //WindowState = FormWindowState.Maximized;
 
+            this.BackColor = Color.White;
             Levels = new GameLevels();
             Rotator = Levels.NextLevel();
 
