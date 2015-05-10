@@ -9,6 +9,13 @@ using System.Windows.Forms;
 
 namespace AA
 {
+    public enum StartScreenState
+    {
+        Start,
+        Won,
+        Lost
+    }
+
     public partial class StartScreen : Form
     {
         Timer timer;
@@ -54,11 +61,31 @@ namespace AA
             }
         }
 
-        public void reloadForm()
+        public void reloadForm(StartScreenState state)
         {
+            switch (state)
+            {
+                case StartScreenState.Won:
+                    label1.Text = "Level " + (GameLevels.LoadCurrentLevel() + 1).ToString() + " won!";
+                    button1.Text = "NEXT LEVEL";
+                    this.BackColor = Color.Green;
+                    break;
+                case StartScreenState.Lost:
+                    label1.Text = "Level " + (GameLevels.LoadCurrentLevel() + 1).ToString() + " lost!";
+                    button1.Text = "TRY AGAIN";
+                    this.BackColor = Color.Red;
+                    break;
+                case StartScreenState.Start:
+                    label1.Text = "Level " + (GameLevels.LoadCurrentLevel() + 1).ToString() + " is next!";
+                    button1.Text = "PLAY";
+                    this.BackColor = Color.White;
+                    break;
+                default:
+                    break;
+            }
             timer = new Timer();
             timer.Interval = 20;
-            timer.Tick += fadeIn;
+            timer.Tick += fadeIn;          
             timer.Start();
         }
     }

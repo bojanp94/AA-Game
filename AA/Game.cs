@@ -27,7 +27,7 @@ namespace AA
 
             this.BackColor = Color.White;
             Levels = new GameLevels();
-            Rotator = Levels.NextLevel();
+            Rotator = Levels.GetLevel();
             Rotator.HorizontalOffset = (this.Width / 2) - Rotator.Padding - Rotator.Radius;
             KeyDown += Game_KeyDown;
 
@@ -77,16 +77,16 @@ namespace AA
             timer1.Stop();
             this.BackColor = Color.Red;
             Invalidate();
-            FadeOutAndClose();
+            FadeOutAndClose(StartScreenState.Lost);
         }
 
-        private void FadeOutAndClose()
+        private void FadeOutAndClose(StartScreenState state = StartScreenState.Start)
         {
             closeTimer = new Timer();
             closeTimer.Interval = 50;
             closeTimer.Tick += fadeOutTick;
             closeTimer.Start();
-            parentForm.reloadForm();
+            parentForm.reloadForm(state);
         }
 
         private void fadeOutTick(object sender, EventArgs e)
@@ -101,26 +101,25 @@ namespace AA
 
         private void NextLevel()
         {
-            closeTimer = new Timer();
-            closeTimer.Interval = 50;
-            closeTimer.Tick += fadeOutTick;
+            //closeTimer = new Timer();
+            //closeTimer.Interval = 50;
+            //closeTimer.Tick += fadeOutTick;
             //closeTimer.Start();
 
-            if (Levels.NextLevel() != null)
-            {
+            //if (Levels.NextLevel() != null)
+            //{
                 Rotator = Levels.NextLevel();
                 Rotator.HorizontalOffset = (this.Width / 2) - Rotator.Padding - Rotator.Radius;
-            }
-            else
-            {
-                // you win message
-                this.Close();
-            }
+            //}
+            //else
+            //{
+            //    // you win message
+            //    this.Close();
+            //}
 
-            this.BackColor = Color.White;
-            
-            timer1.Start();
-            Invalidate();
+            //this.BackColor = Color.White;
+            //timer1.Start();
+            //Invalidate();
         }
 
         private void WinLevel()
@@ -128,6 +127,7 @@ namespace AA
             timer1.Stop();
             this.BackColor = Color.Green;
             Invalidate();
+            FadeOutAndClose(StartScreenState.Won);
             NextLevel();
         }
 

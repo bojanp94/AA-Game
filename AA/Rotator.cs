@@ -63,11 +63,11 @@ namespace AA
             g.FillEllipse(Brush, Padding + Radius + HorizontalOffset - Ball.Radius / 2, Padding + Radius * 2 + Radius * StickRatio , Ball.Radius, Ball.Radius);
             if (NumberOfBallsToShoot / 10 > 0)
             {
-                g.DrawString(NumberOfBallsToShoot.ToString(), new Font(new FontFamily("Arial"), 12), new SolidBrush(Color.White), 5 + Padding + Radius - Ball.Radius / 2, 8 + Padding + Radius * 2 + Radius * StickRatio);
+                g.DrawString(NumberOfBallsToShoot.ToString(), new Font(new FontFamily("Arial"), 12), new SolidBrush(Color.White), 5 + Padding + Radius + HorizontalOffset - Ball.Radius / 2, 8 + Padding + Radius * 2 + Radius * StickRatio);
             }
             else
             {
-                g.DrawString(NumberOfBallsToShoot.ToString(), new Font(new FontFamily("Arial"), 12), new SolidBrush(Color.White), 10 + Padding + Radius - Ball.Radius / 2, 8 + Padding + Radius * 2 + Radius * StickRatio);
+                g.DrawString(NumberOfBallsToShoot.ToString(), new Font(new FontFamily("Arial"), 12), new SolidBrush(Color.White), 10 + Padding + Radius + HorizontalOffset - Ball.Radius / 2, 8 + Padding + Radius * 2 + Radius * StickRatio);
             }
         }
         public Point GetCoordinatesForBall(Point start, double angle, int offset)
@@ -112,7 +112,7 @@ namespace AA
 
             for (int i = 0; i < Balls.Count - 1; i++)
             {
-                if (Math.Abs(last_ball.Angle - Balls[i].Angle) < BallAngle || Math.Abs(last_ball.Angle - Balls[i].Angle) > (360 - BallAngle ))
+                if (Math.Abs(last_ball.Angle - Balls[i].Angle) < BallAngle || Math.Abs(last_ball.Angle - Balls[i].Angle) > (360 - BallAngle))
                     return true;
             }
 
