@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.IO;
 
 namespace AA
 {
@@ -14,8 +15,30 @@ namespace AA
         public GameLevels()
         {
             Levels = new List<Rotator>();
-            CurrentLevel = 0;
+            CurrentLevel = LoadCurrentLevel();
             InitLevels();
+        }
+
+        public static int LoadCurrentLevel()
+        {
+            if (!File.Exists("level.bin"))
+                return 0;
+
+            using (BinaryReader br = new BinaryReader(File.Open("level.bin", FileMode.Open)))
+            {
+                return br.ReadByte();
+            }
+        }
+
+        public static void SaveLevel(int level)
+        {
+            if (!File.Exists("level.bin"))
+                File.Delete("level.bin");
+
+            using (BinaryWriter bw = new BinaryWriter(File.Open("level.bin", FileMode.Create)))
+            {
+                bw.Write(level);
+            }
         }
 
         private void InitLevels()
@@ -56,16 +79,33 @@ namespace AA
             }
         }
 
+        public Rotator GetLevel()
+        {
+            if (CurrentLevel > NumberOfLevels)
+            {
+                CurrentLevel = 0;
+                SaveLevel(CurrentLevel);
+            }
+            return Levels[CurrentLevel];
+        }
+
         public Rotator NextLevel()
         {
             if (CurrentLevel < NumberOfLevels)
             {
                 int i = CurrentLevel;
                 CurrentLevel++;
+                SaveLevel(CurrentLevel);
                 return Levels[i];
             }
+            else
+            {
+                CurrentLevel = 0;
+                SaveLevel(CurrentLevel);
+                return Levels[0];
+            }
 
-            return null;
+            //return null;
         }
     }
 }

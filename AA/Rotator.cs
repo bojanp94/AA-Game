@@ -112,7 +112,7 @@ namespace AA
 
             for (int i = 0; i < Balls.Count - 1; i++)
             {
-                if (Math.Abs(last_ball.Angle - Balls[i].Angle) < BallAngle || Math.Abs(last_ball.Angle - Balls[i].Angle) > (360 - BallAngle ))
+                if (Math.Abs(last_ball.Angle - Balls[i].Angle) < BallAngle || Math.Abs(last_ball.Angle - Balls[i].Angle) > (360 - BallAngle))
                     return true;
             }
 
